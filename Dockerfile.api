@@ -1,0 +1,24 @@
+# Build stage
+FROM gradle:8.4.0-jdk17 as build
+WORKDIR /home/gradle
+COPY --chown=gradle:gradle . .
+RUN gradle build --no-daemon -x test
+
+# Package stage
+FROM amazoncorretto:17
+COPY --from=build /home/gradle/build/libs/vision.jar vision.jar
+
+# Add the Datadog Java APM agent
+ADD https://github.com/DataDog/dd-trace-java/releases/download/v1.15.1/dd-java-agent.jar dd-java-agent.jar
+
+# Environment variables
+# After setting up AWS Secret Manager or k8s Secrets, please remove this code
+ENV JAVA_TOOL_OPTIONS="-javaagent:/dd-java-agent.jar"
+
+# Install dd-trace-ot client library
+RUN mkdir -p /usr/local/dd-trace-ot/
+ADD https://github.com/DataDog/dd-trace-java/releases/download/v1.15.1/dd-trace-ot-1.15.1.jar /usr/local/dd-trace-ot/
+ENV CLASSPATH="$CLASSPATH:/usr/local/dd-trace-ot/dd-trace-ot-1.15.1.jar"
+
+# Entry point
+ENTRYPOINT ["java","-Dspring.profiles.active=${SPRING_PROFILES_ACTIVE}","-jar","vision.jar"]
