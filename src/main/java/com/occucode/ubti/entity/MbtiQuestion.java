@@ -18,14 +18,4 @@ public class MbtiQuestion {
 
     @Column(name = "description")
     private String description;
-
-    @Column(name = "item")
-    private MbtiItemEnum item; // mbti 의 각 항목 (E, I, N, S, T, F, P, J)
-
-    @Column(name = "score")
-    private Integer score; // 가중치
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "question_id")
-    private MbtiQuestion question;
 }
