@@ -25,6 +25,6 @@ public class MbtiAnswerItem {
     private Integer score; // 가중치
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "question_id")
+    @JoinColumn(name = "question_num")
     private MbtiQuestion question;
 }
