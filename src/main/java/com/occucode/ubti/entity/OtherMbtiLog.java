@@ -20,10 +20,7 @@ public class OtherMbtiLog {
     private String otherAnswersJson;
 
     @Column(name = "other_result", nullable = false)
-    private String otherResult;
-
-    @Column(name = "mbti_result", nullable = false)
-    private MbtiEnum mbtiResult;
+    private MbtiEnum otherResult;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_num")

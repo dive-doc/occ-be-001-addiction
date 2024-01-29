@@ -20,10 +20,7 @@ public class SelfMbtiLog {
     private String selfAnswersJson;
 
     @Column(name = "self_result", nullable = false)
-    private String selfResult;
-
-    @Column(name = "mbti_result", nullable = false)
-    private MbtiEnum mbtiResult;
+    private MbtiEnum selfResult;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_num")
