@@ -18,6 +18,7 @@ public class MbtiAnswerItem {
     @Column(name = "description")
     private String description;
 
+    @Enumerated(EnumType.STRING)
     @Column(name = "item")
     private MbtiItemEnum item; // mbti 의 각 항목 (E, I, N, S, T, F, P, J)
 

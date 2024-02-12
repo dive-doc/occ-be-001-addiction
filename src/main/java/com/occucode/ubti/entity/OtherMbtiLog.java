@@ -11,19 +11,32 @@ import lombok.*;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class OtherMbtiLog {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "other_log_num")
-    private Long otherLogNum;
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  @Column(name = "other_log_num")
+  private Long otherLogNum;
 
-    @Column(name = "other_answers_json", nullable = false)
-    private String otherAnswersJson;
+  @Column(name = "other_answers_json", nullable = false)
+  private String otherAnswersJson;
 
-    @Column(name = "other_result", nullable = false)
-    private MbtiEnum otherResult;
+  @Enumerated(EnumType.STRING)
+  @Column(name = "other_result", nullable = false)
+  private MbtiEnum otherResult;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_num")
-    private User user;
+  // to (from 은 없어도 되는가?)
+  @ManyToOne(fetch = FetchType.LAZY)
+  @JoinColumn(name = "user_num")
+  private User user;
 
+  public static OtherMbtiLog toEntity(
+    String otherAnswersJson,
+    MbtiEnum otherResult,
+    User user
+  ) {
+    return OtherMbtiLog.builder()
+      .otherAnswersJson(otherAnswersJson)
+      .otherResult(otherResult)
+      .user(user)
+      .build();
+  }
 }

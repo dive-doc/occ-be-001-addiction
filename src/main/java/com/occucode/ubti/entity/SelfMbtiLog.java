@@ -19,6 +19,7 @@ public class SelfMbtiLog {
     @Column(name = "self_answers_json", nullable = false)
     private String selfAnswersJson;
 
+    @Enumerated(EnumType.STRING)
     @Column(name = "self_result", nullable = false)
     private MbtiEnum selfResult;
 
@@ -26,4 +27,15 @@ public class SelfMbtiLog {
     @JoinColumn(name = "user_num")
     private User user;
 
+    public static SelfMbtiLog toEntity(
+      String selfAnswersJson,
+      MbtiEnum selfResult,
+      User user
+    ) {
+        return SelfMbtiLog.builder()
+          .selfAnswersJson(selfAnswersJson)
+          .selfResult(selfResult)
+          .user(user)
+          .build();
+    }
 }

@@ -25,6 +25,9 @@ dependencies {
 	compileOnly 'org.projectlombok:lombok'
 	annotationProcessor 'org.projectlombok:lombok'
 
+	// jackson
+	implementation 'com.fasterxml.jackson.core:jackson-core:2.15.2'
+
 	runtimeOnly 'com.h2database:h2'
 }
 
