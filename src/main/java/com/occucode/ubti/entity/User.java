@@ -1,5 +1,6 @@
 package com.occucode.ubti.entity;
 
+import com.occucode.ubti.dto.UserDto;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -15,7 +16,13 @@ public class User {
     @Column(name = "user_num")
     private Long userNum;
 
-    @Column(name = "nickname", nullable = false)
+    @Column(name = "nickname", unique = true)
     private String nickname;
+
+    public static User toEntity(UserDto userDto) {
+        return User.builder()
+                .nickname(userDto.getNickname())
+                .build();
+    }
 
 }
