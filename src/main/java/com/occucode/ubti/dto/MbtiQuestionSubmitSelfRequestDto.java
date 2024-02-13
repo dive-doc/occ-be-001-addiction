@@ -9,7 +9,6 @@ import java.util.List;
 @Data
 @AllArgsConstructor
 public class MbtiQuestionSubmitSelfRequestDto {
-  // TODO: userNum 으로 변경
   @JsonProperty("userNum")
   private Long userNum;
 

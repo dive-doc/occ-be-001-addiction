@@ -1,6 +1,5 @@
 package com.occucode.ubti.entity;
 
-import com.occucode.ubti.enums.MbtiItemEnum;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -8,9 +7,9 @@ import java.util.List;
 
 @Entity
 @Data // getter, setter, toString, equals, hasCode 메소드 제공
+@Builder
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
-@Builder
 public class MbtiQuestion {
 
   @Id
@@ -23,4 +22,12 @@ public class MbtiQuestion {
 
   @OneToMany(mappedBy = "question")
   private List<MbtiAnswerItem> mbtiAnswerItemList;
+
+  public static MbtiQuestion toEntity(
+    String description
+  ) {
+    return MbtiQuestion.builder()
+      .description(description)
+      .build();
+  }
 }
