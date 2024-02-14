@@ -5,8 +5,8 @@ import com.occucode.ubti.vo.UserVo;
 
 public interface UserService {
 
-    void registerUser(UserDto userDto);
+  void registerUser(UserDto userDto);
 
-    UserVo getUser(String nickName);
+  UserVo getUser(String nickName);
 
 }

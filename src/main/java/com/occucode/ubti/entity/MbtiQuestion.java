@@ -6,7 +6,7 @@ import lombok.*;
 import java.util.List;
 
 @Entity
-@Data // getter, setter, toString, equals, hasCode 메소드 제공
+@Getter
 @Builder
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
@@ -23,9 +23,7 @@ public class MbtiQuestion {
   @OneToMany(mappedBy = "question")
   private List<MbtiAnswerItem> mbtiAnswerItemList;
 
-  public static MbtiQuestion toEntity(
-    String description
-  ) {
+  public static MbtiQuestion toEntity(String description) {
     return MbtiQuestion.builder()
       .description(description)
       .build();

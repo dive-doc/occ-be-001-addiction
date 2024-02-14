@@ -5,7 +5,7 @@ import jakarta.persistence.*;
 import lombok.*;
 
 @Entity
-@Data // getter, setter, toString, equals, hasCode 메소드 제공
+@Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
 @Builder
@@ -29,12 +29,7 @@ public class MbtiAnswerItem {
   @JoinColumn(name = "question_num")
   private MbtiQuestion question;
 
-  public static MbtiAnswerItem toEntity(
-    String description,
-    MbtiItemEnum item,
-    Integer score,
-    MbtiQuestion question
-  ) {
+  public static MbtiAnswerItem toEntity(String description, MbtiItemEnum item, Integer score, MbtiQuestion question) {
     return MbtiAnswerItem.builder()
       .description(description)
       .item(item)

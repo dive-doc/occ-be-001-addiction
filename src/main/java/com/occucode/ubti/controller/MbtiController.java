@@ -18,7 +18,7 @@ import java.util.List;
 
 @Tag(name = "MBTI", description = "MBTI 관련 API")
 @RestController
-@RequestMapping("mbti")
+@RequestMapping("/mbti")
 @RequiredArgsConstructor
 public class MbtiController {
 
@@ -32,6 +32,7 @@ public class MbtiController {
       HttpStatus.OK
     );
   }
+
   @Operation(summary = "나의 MBTI 검사 후 제출 (self)", description = "MBTI 검사 후 대답 리스트를 제출합니다.")
   @PostMapping(value = "/question/submit/self")
   public ResponseEntity<MbtiQuestionSubmitResponseDto> handleSubmitQuestionSelf(

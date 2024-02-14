@@ -11,18 +11,18 @@ import lombok.*;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class User {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "user_num")
-    private Long userNum;
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  @Column(name = "user_num")
+  private Long userNum;
 
-    @Column(name = "nickname", unique = true)
-    private String nickname;
+  @Column(name = "nickname", unique = true)
+  private String nickname;
 
-    public static User toEntity(UserDto userDto) {
-        return User.builder()
-                .nickname(userDto.getNickname())
-                .build();
-    }
+  public static User toEntity(UserDto userDto) {
+    return User.builder()
+      .nickname(userDto.getNickname())
+      .build();
+  }
 
 }

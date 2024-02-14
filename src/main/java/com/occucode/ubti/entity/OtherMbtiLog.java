@@ -23,20 +23,20 @@ public class OtherMbtiLog {
   @Column(name = "other_result", nullable = false)
   private MbtiEnum otherResult;
 
-  // to (from 은 없어도 되는가?)
   @ManyToOne(fetch = FetchType.LAZY)
-  @JoinColumn(name = "user_num")
-  private User user;
+  @JoinColumn(name = "to_user_num")
+  private User to;
 
-  public static OtherMbtiLog toEntity(
-    String otherAnswersJson,
-    MbtiEnum otherResult,
-    User user
-  ) {
+  @ManyToOne(fetch = FetchType.LAZY)
+  @JoinColumn(name = "from_user_num")
+  private User from;
+
+  public static OtherMbtiLog toEntity(String otherAnswersJson, MbtiEnum otherResult, User to, User from) {
     return OtherMbtiLog.builder()
       .otherAnswersJson(otherAnswersJson)
       .otherResult(otherResult)
-      .user(user)
+      .to(to)
+      .from(from)
       .build();
   }
 }

@@ -11,19 +11,19 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class UserServiceImpl implements UserService {
 
-    private final UserRepository userRepository;
+  private final UserRepository userRepository;
 
-    @Override
-    public void registerUser(UserDto userDto) {
-        User user = User.toEntity(userDto);
+  @Override
+  public void registerUser(UserDto userDto) {
+    User user = User.toEntity(userDto);
 
-        userRepository.save(user);
-    }
+    userRepository.save(user);
+  }
 
-    @Override
-    public UserVo getUser(String nickName) {
-        User user = userRepository.findByNickname(nickName);
+  @Override
+  public UserVo getUser(String nickName) {
+    User user = userRepository.findByNickname(nickName);
 
-        return UserVo.toUserVo(user);
-    }
+    return UserVo.toUserVo(user);
+  }
 }

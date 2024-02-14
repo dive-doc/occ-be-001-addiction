@@ -10,16 +10,16 @@ import lombok.*;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Note {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "note_num")
-    private Long noteNum;
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  @Column(name = "note_num")
+  private Long noteNum;
 
-    @Column(name = "note_detail")
-    private String noteDetail;
+  @Column(name = "note_detail")
+  private String noteDetail;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_num")
-    private User user;
+  @ManyToOne(fetch = FetchType.LAZY)
+  @JoinColumn(name = "user_num")
+  private User user;
 
 }

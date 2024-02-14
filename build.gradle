@@ -25,9 +25,6 @@ dependencies {
 	compileOnly 'org.projectlombok:lombok'
 	annotationProcessor 'org.projectlombok:lombok'
 
-	// jackson
-	implementation 'com.fasterxml.jackson.core:jackson-core:2.15.2'
-
 	// Spring Doc (for swagger)
 	implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.2.0'
 	implementation 'org.springdoc:springdoc-openapi-starter-common:2.2.0'
