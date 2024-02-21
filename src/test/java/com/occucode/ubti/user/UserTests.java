@@ -25,7 +25,7 @@ public class UserTests {
 
     @Test
     void getUserTest() {
-        UserVo userVo = userService.getUser("testNickname");
+        UserVo userVo = userService.getUser(1L);
 
         assertThat(userVo).isNotNull();
 
