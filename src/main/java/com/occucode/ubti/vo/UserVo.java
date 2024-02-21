@@ -7,14 +7,14 @@ import lombok.Getter;
 @Getter
 @Builder
 public class UserVo {
-    private Long userNum;
-    private String nickname;
+  private Long userNum;
+  private String nickname;
 
-    public static UserVo toUserVo(User user) {
-        return UserVo.builder()
-                .userNum(user.getUserNum())
-                .nickname(user.getNickname())
-                .build();
-    }
+  public static UserVo toUserVo(User user) {
+    return UserVo.builder()
+      .userNum(user.getUserNum())
+      .nickname(user.getNickname())
+      .build();
+  }
 
 }
