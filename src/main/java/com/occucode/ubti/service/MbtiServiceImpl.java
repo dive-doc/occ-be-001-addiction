@@ -9,6 +9,7 @@ import com.occucode.ubti.entity.SelfMbtiLog;
 import com.occucode.ubti.entity.User;
 import com.occucode.ubti.enums.MbtiEnum;
 import com.occucode.ubti.repository.*;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -18,25 +19,14 @@ import java.util.List;
 import static java.util.stream.Collectors.toList;
 
 @Service
+@RequiredArgsConstructor
 public class MbtiServiceImpl implements MbtiService{
-
-  @Autowired
-  MbtiAnswerItemRepository mbtiAnswerItemRepository;
-
-  @Autowired
-  MbtiQuestionRepository mbtiQuestionRepository;
-
-  @Autowired
-  MbtiResultRepository mbtiResultRepository;
-
-  @Autowired
-  UserRepository userRepository;
-
-  @Autowired
-  SelfMbtiLogRepository selfMbtiLogRepository;
-
-  @Autowired
-  OtherMbtiLogRepository otherMbtiLogRepository;
+  private final MbtiAnswerItemRepository mbtiAnswerItemRepository;
+  private final MbtiQuestionRepository mbtiQuestionRepository;
+  private final MbtiResultRepository mbtiResultRepository;
+  private final UserRepository userRepository;
+  private final SelfMbtiLogRepository selfMbtiLogRepository;
+  private final OtherMbtiLogRepository otherMbtiLogRepository;
 
   // TODO: queryDsl 고려 (question - item, fetchJoin)
   @Transactional(readOnly = true)

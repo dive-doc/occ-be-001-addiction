@@ -23,7 +23,6 @@ import java.util.List;
 @RequiredArgsConstructor
 public class MbtiController {
 
-  @Autowired
   private final MbtiService mbtiService;
 
   @Operation(summary = "MBTI 검사 전체 질문 리스트 조회", description = "MBTI 검사 전체 질문 리스트 조회합니다.")
