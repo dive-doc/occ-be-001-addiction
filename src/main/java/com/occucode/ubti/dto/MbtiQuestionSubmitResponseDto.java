@@ -21,10 +21,10 @@ public class MbtiQuestionSubmitResponseDto {
   @JsonProperty("description")
   private String description;
 
-  @Column(name = "bestMbti")
+  @JsonProperty("bestMbti")
   private MbtiEnum bestMbti;
 
-  @Column(name = "worstMbti")
+  @JsonProperty("worstMbti")
   private MbtiEnum worstMbti;
 
   public static MbtiQuestionSubmitResponseDto toDto(
