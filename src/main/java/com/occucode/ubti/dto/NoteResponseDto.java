@@ -17,9 +17,7 @@ public class NoteResponseDto {
   @JsonProperty("noteDetail")
   private String noteDetail;
 
-  public static NoteResponseDto toDto(
-    Note note
-  ) {
+  public static NoteResponseDto toDto(Note note) {
     return NoteResponseDto.builder()
       .noteNum(note.getNoteNum())
       .noteDetail(note.getNoteDetail())

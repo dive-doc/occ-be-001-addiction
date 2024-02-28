@@ -24,15 +24,13 @@ public class MbtiQuestionResponseDto {
   @JsonProperty("itemList")
   private List<MbtiAnswerItemVo> itemList;
 
-  public static MbtiQuestionResponseDto toDto(
-    MbtiQuestion mbtiQuestion
-  ) {
+  public static MbtiQuestionResponseDto toDto(MbtiQuestion mbtiQuestion) {
     return MbtiQuestionResponseDto.builder()
       .questionNum(mbtiQuestion.getQuestionNum())
       .description(mbtiQuestion.getDescription())
       .itemList(mbtiQuestion.getMbtiAnswerItemList()
         .stream()
-        .map(MbtiAnswerItemVo::toDMbtiAnswerItemVo).collect(toList()))
+        .map(MbtiAnswerItemVo::toMbtiAnswerItemVo).collect(toList()))
       .build();
   }
 }

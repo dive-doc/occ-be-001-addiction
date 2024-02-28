@@ -23,9 +23,7 @@ public class NoteController {
 
   @Operation(summary = "Note 조회", description = "나의 전체 메모(note)를 조회합니다.")
   @GetMapping(value = "/note/{userNum}")
-  public ResponseEntity<List<NoteResponseDto>> handleGetNoteList(
-    @PathVariable Long userNum
-  ) {
+  public ResponseEntity<List<NoteResponseDto>> handleGetNoteList(@PathVariable Long userNum) {
     return new ResponseEntity<>(
       noteService.getNoteList(userNum),
       HttpStatus.OK
@@ -34,9 +32,7 @@ public class NoteController {
 
   @Operation(summary = "Note 생성", description = "친구의 게시판에 메모(note)를 추가합니다.")
   @PostMapping(value = "/note")
-  public ResponseEntity<Long> handleCreateNote(
-    @RequestBody NoteRequestDto noteRequestDto
-  ) {
+  public ResponseEntity<Long> handleCreateNote(@RequestBody NoteRequestDto noteRequestDto) {
     return new ResponseEntity<>(
       noteService.createNote(noteRequestDto),
       HttpStatus.OK

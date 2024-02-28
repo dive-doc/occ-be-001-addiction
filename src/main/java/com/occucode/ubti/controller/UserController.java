@@ -18,7 +18,6 @@ import org.springframework.web.bind.annotation.RestController;
 @RequiredArgsConstructor
 public class UserController {
 
-
   private final UserService userService;
 
   @Operation(summary = "User(nickname) 등록", description = "User(nickname)을 등록 합니다.")

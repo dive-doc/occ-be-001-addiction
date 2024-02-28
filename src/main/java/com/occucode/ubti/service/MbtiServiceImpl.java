@@ -31,9 +31,7 @@ public class MbtiServiceImpl implements MbtiService {
   }
 
   @Transactional
-  public MbtiQuestionSubmitResponseDto submitQuestionSelf(
-    MbtiQuestionSubmitSelfRequestDto mbtiQuestionSubmitSelfRequestDto
-  ) throws JsonProcessingException {
+  public MbtiQuestionSubmitResponseDto submitQuestionSelf(MbtiQuestionSubmitSelfRequestDto mbtiQuestionSubmitSelfRequestDto) throws JsonProcessingException {
     // STEP 1 : 결과 도출
     MbtiEnum mbti = MbtiEnum.ENFP; // TODO: 결과 도출 로직 도입 예정
 
@@ -56,9 +54,7 @@ public class MbtiServiceImpl implements MbtiService {
   }
 
   @Transactional
-  public MbtiQuestionSubmitResponseDto submitQuestionFriend(
-    MbtiQuestionSubmitFriendRequestDto mbtiQuestionSubmitFriendRequestDto
-  ) throws JsonProcessingException {
+  public MbtiQuestionSubmitResponseDto submitQuestionFriend(MbtiQuestionSubmitFriendRequestDto mbtiQuestionSubmitFriendRequestDto) throws JsonProcessingException {
     // STEP 1 : 결과 도출
     MbtiEnum mbti = MbtiEnum.ENFP; // TODO: 결과 도출 로직 도입 예정
 

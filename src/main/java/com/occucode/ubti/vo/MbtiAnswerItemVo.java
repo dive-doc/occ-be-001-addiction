@@ -16,9 +16,7 @@ public class MbtiAnswerItemVo {
   @JsonProperty("description")
   private String description;
 
-  public static MbtiAnswerItemVo toDMbtiAnswerItemVo(
-    MbtiAnswerItem mbtiAnswerItem
-  ) {
+  public static MbtiAnswerItemVo toMbtiAnswerItemVo(MbtiAnswerItem mbtiAnswerItem) {
     return MbtiAnswerItemVo.builder()
       .itemNum(mbtiAnswerItem.getItemNum())
       .description(mbtiAnswerItem.getDescription())

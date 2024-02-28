@@ -12,11 +12,7 @@ public interface MbtiService {
 
   List<MbtiQuestionResponseDto> getMbtiQuestList();
 
-  MbtiQuestionSubmitResponseDto submitQuestionSelf(
-    MbtiQuestionSubmitSelfRequestDto mbtiQuestionSubmitSelfRequestDto
-  ) throws JsonProcessingException;
+  MbtiQuestionSubmitResponseDto submitQuestionSelf(MbtiQuestionSubmitSelfRequestDto mbtiQuestionSubmitSelfRequestDto) throws JsonProcessingException;
 
-  MbtiQuestionSubmitResponseDto submitQuestionFriend(
-    MbtiQuestionSubmitFriendRequestDto mbtiQuestionSubmitFriendRequestDto
-  ) throws JsonProcessingException;
+  MbtiQuestionSubmitResponseDto submitQuestionFriend(MbtiQuestionSubmitFriendRequestDto mbtiQuestionSubmitFriendRequestDto) throws JsonProcessingException;
 }
