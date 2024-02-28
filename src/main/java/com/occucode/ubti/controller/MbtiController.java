@@ -37,8 +37,7 @@ public class MbtiController {
   @Operation(summary = "나의 MBTI 검사 후 제출 (self)", description = "MBTI 검사 후 대답 리스트를 제출합니다.")
   @PostMapping(value = "/question/submit/self")
   public ResponseEntity<MbtiQuestionSubmitResponseDto> handleSubmitQuestionSelf(
-    @RequestBody MbtiQuestionSubmitSelfRequestDto mbtiQuestionSubmitSelfRequestDto
-  ) throws JsonProcessingException {
+    @RequestBody MbtiQuestionSubmitSelfRequestDto mbtiQuestionSubmitSelfRequestDto) throws JsonProcessingException {
     return new ResponseEntity<>(
       mbtiService.submitQuestionSelf(mbtiQuestionSubmitSelfRequestDto),
       HttpStatus.OK
@@ -48,8 +47,7 @@ public class MbtiController {
   @Operation(summary = "친구의 MBTI 검사 후 제출 (friend)", description = "친구의 MBTI 검사 후 대답 리스트를 제출합니다.")
   @PostMapping(value = "/question/submit/friend")
   public ResponseEntity<MbtiQuestionSubmitResponseDto> handleSubmitQuestionFriend(
-    @RequestBody MbtiQuestionSubmitFriendRequestDto mbtiQuestionSubmitFriendRequestDto
-  ) throws JsonProcessingException {
+    @RequestBody MbtiQuestionSubmitFriendRequestDto mbtiQuestionSubmitFriendRequestDto) throws JsonProcessingException {
     return new ResponseEntity<>(
       mbtiService.submitQuestionFriend(mbtiQuestionSubmitFriendRequestDto),
       HttpStatus.OK

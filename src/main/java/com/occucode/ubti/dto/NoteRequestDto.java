@@ -6,10 +6,10 @@ import lombok.Data;
 
 @Data
 @AllArgsConstructor
-public class MbtiAnswerItemDto {
-  @JsonProperty("itemNum")
-  private Long itemNum;
+public class NoteRequestDto {
+  @JsonProperty("noteDetail")
+  private String noteDetail;
 
-  @JsonProperty("description")
-  private String description;
+  @JsonProperty("userNum")
+  private Long userNum;
 }

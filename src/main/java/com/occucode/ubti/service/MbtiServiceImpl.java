@@ -3,14 +3,10 @@ package com.occucode.ubti.service;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.occucode.ubti.dto.*;
-import com.occucode.ubti.entity.MbtiResult;
-import com.occucode.ubti.entity.OtherMbtiLog;
-import com.occucode.ubti.entity.SelfMbtiLog;
-import com.occucode.ubti.entity.User;
+import com.occucode.ubti.entity.*;
 import com.occucode.ubti.enums.MbtiEnum;
 import com.occucode.ubti.repository.*;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -20,37 +16,23 @@ import static java.util.stream.Collectors.toList;
 
 @Service
 @RequiredArgsConstructor
-public class MbtiServiceImpl implements MbtiService{
-  private final MbtiAnswerItemRepository mbtiAnswerItemRepository;
+public class MbtiServiceImpl implements MbtiService {
   private final MbtiQuestionRepository mbtiQuestionRepository;
   private final MbtiResultRepository mbtiResultRepository;
   private final UserRepository userRepository;
   private final SelfMbtiLogRepository selfMbtiLogRepository;
   private final OtherMbtiLogRepository otherMbtiLogRepository;
 
-  // TODO: queryDsl 고려 (question - item, fetchJoin)
   @Transactional(readOnly = true)
   public List<MbtiQuestionResponseDto> getMbtiQuestList() {
-    // TODO: builder 적용
-    return mbtiQuestionRepository.findAll()
+    return mbtiQuestionRepository.findAllWithAnswer()
       .stream()
-      .map(mbtiQuestion ->
-        new MbtiQuestionResponseDto(
-          mbtiQuestion.getQuestionNum(),
-          mbtiQuestion.getDescription(),
-          mbtiQuestion.getMbtiAnswerItemList()
-            .stream()
-            .map(mbtiAnswerItem ->
-              new MbtiAnswerItemDto(mbtiAnswerItem.getItemNum(), mbtiAnswerItem.getDescription())
-            ).collect(toList())
-        )
-      ).collect(toList());
+      .map(MbtiQuestionResponseDto::toDto).collect(toList());
   }
 
   @Transactional
   public MbtiQuestionSubmitResponseDto submitQuestionSelf(
-    MbtiQuestionSubmitSelfRequestDto mbtiQuestionSubmitSelfRequestDto
-  ) throws JsonProcessingException {
+    MbtiQuestionSubmitSelfRequestDto mbtiQuestionSubmitSelfRequestDto) throws JsonProcessingException {
     // STEP 1 : 결과 도출
     MbtiEnum mbti = MbtiEnum.ENFP; // TODO: 결과 도출 로직 도입 예정
 
@@ -74,8 +56,7 @@ public class MbtiServiceImpl implements MbtiService{
 
   @Transactional
   public MbtiQuestionSubmitResponseDto submitQuestionFriend(
-    MbtiQuestionSubmitFriendRequestDto mbtiQuestionSubmitFriendRequestDto
-  ) throws JsonProcessingException {
+    MbtiQuestionSubmitFriendRequestDto mbtiQuestionSubmitFriendRequestDto) throws JsonProcessingException {
     // STEP 1 : 결과 도출
     MbtiEnum mbti = MbtiEnum.ENFP; // TODO: 결과 도출 로직 도입 예정
 
