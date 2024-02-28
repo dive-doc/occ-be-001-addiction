@@ -22,4 +22,10 @@ public class Note {
   @JoinColumn(name = "user_num")
   private User user;
 
+  public static Note toEntity(String noteDetail, User user) {
+    return Note.builder()
+      .noteDetail(noteDetail)
+      .user(user)
+      .build();
+  }
 }

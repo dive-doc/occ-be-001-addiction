@@ -1,4 +1,4 @@
-package com.occucode.ubti.dto;
+package com.occucode.ubti.vo;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.occucode.ubti.entity.MbtiAnswerItem;
@@ -9,17 +9,17 @@ import lombok.Data;
 @Data
 @AllArgsConstructor
 @Builder
-public class MbtiAnswerItemDto {
+public class MbtiAnswerItemVo {
   @JsonProperty("itemNum")
   private Long itemNum;
 
   @JsonProperty("description")
   private String description;
 
-  public static MbtiAnswerItemDto toDto(
+  public static MbtiAnswerItemVo toDMbtiAnswerItemVo(
     MbtiAnswerItem mbtiAnswerItem
   ) {
-    return MbtiAnswerItemDto.builder()
+    return MbtiAnswerItemVo.builder()
       .itemNum(mbtiAnswerItem.getItemNum())
       .description(mbtiAnswerItem.getDescription())
       .build();
