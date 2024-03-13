@@ -6,6 +6,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 @SpringBootTest
 class UbtiApplicationTests {
 
+	private
+
 	@Test
 	void contextLoads() {
 	}

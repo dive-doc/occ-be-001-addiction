@@ -9,7 +9,4 @@ import java.util.List;
 
 @Repository
 public interface MbtiQuestionRepository extends JpaRepository<MbtiQuestion, Long> {
-
-  @Query("SELECT mq FROM MbtiQuestion mq JOIN FETCH mq.mbtiAnswerItemList")
-  List<MbtiQuestion> findAllWithAnswer();
 }
