@@ -1,4 +1,4 @@
-package com.occucode.ubti.utils.queryDsl;
+package com.occucode.ubti.config;
 
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import jakarta.persistence.EntityManager;
