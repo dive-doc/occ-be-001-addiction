@@ -5,5 +5,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface MbtiQuestionRepository extends JpaRepository<MbtiQuestion, Long> {
+public interface MbtiQuestionRepository extends JpaRepository<MbtiQuestion, Long>, MbtiQuestionRepositorySupport {
 }

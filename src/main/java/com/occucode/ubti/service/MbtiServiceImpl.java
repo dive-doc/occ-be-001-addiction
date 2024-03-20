@@ -25,11 +25,11 @@ public class MbtiServiceImpl implements MbtiService {
   private final UserRepository userRepository;
   private final SelfMbtiLogRepository selfMbtiLogRepository;
   private final OtherMbtiLogRepository otherMbtiLogRepository;
-  private final MbtiQuestionRepositorySupport mbtiQuestionRepositorySupport;
+  private final MbtiQuestionRepository mbtiQuestionRepository;
 
   @Transactional(readOnly = true)
   public List<MbtiQuestionResponseDto> getMbtiQuestList() {
-    return mbtiQuestionRepositorySupport.findAllWithAnswer()
+    return mbtiQuestionRepository.findAllWithAnswer()
       .stream()
       .map(MbtiQuestionResponseDto::toDto)
       .toList();
