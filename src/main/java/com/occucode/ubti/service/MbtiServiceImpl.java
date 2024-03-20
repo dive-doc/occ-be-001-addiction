@@ -6,13 +6,12 @@ import com.occucode.ubti.dto.MbtiQuestionResponseDto;
 import com.occucode.ubti.dto.MbtiQuestionSubmitFriendRequestDto;
 import com.occucode.ubti.dto.MbtiQuestionSubmitResponseDto;
 import com.occucode.ubti.dto.MbtiQuestionSubmitSelfRequestDto;
-import com.occucode.ubti.entity.*;
+import com.occucode.ubti.entity.MbtiResult;
+import com.occucode.ubti.entity.OtherMbtiLog;
+import com.occucode.ubti.entity.SelfMbtiLog;
+import com.occucode.ubti.entity.User;
 import com.occucode.ubti.enums.MbtiEnum;
-import com.occucode.ubti.repository.MbtiResultRepository;
-import com.occucode.ubti.repository.OtherMbtiLogRepository;
-import com.occucode.ubti.repository.SelfMbtiLogRepository;
-import com.occucode.ubti.repository.UserRepository;
-import com.querydsl.jpa.impl.JPAQueryFactory;
+import com.occucode.ubti.repository.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -26,20 +25,14 @@ public class MbtiServiceImpl implements MbtiService {
   private final UserRepository userRepository;
   private final SelfMbtiLogRepository selfMbtiLogRepository;
   private final OtherMbtiLogRepository otherMbtiLogRepository;
-  private final JPAQueryFactory jpaQueryFactory;
+  private final MbtiQuestionRepositorySupport mbtiQuestionRepositorySupport;
 
   @Transactional(readOnly = true)
   public List<MbtiQuestionResponseDto> getMbtiQuestList() {
-    QMbtiQuestion mbtiQuestion = QMbtiQuestion.mbtiQuestion;
-
-    return jpaQueryFactory
-      .selectFrom(mbtiQuestion)
-      .leftJoin(mbtiQuestion.mbtiAnswerItemList).fetchJoin()
-      .fetch()
+    return mbtiQuestionRepositorySupport.findAllWithAnswer()
       .stream()
       .map(MbtiQuestionResponseDto::toDto)
       .toList();
-
   }
 
   @Transactional

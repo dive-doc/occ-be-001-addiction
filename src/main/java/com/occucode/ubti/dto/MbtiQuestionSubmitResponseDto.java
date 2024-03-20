@@ -3,7 +3,6 @@ package com.occucode.ubti.dto;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.occucode.ubti.entity.MbtiResult;
 import com.occucode.ubti.enums.MbtiEnum;
-import jakarta.persistence.Column;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
