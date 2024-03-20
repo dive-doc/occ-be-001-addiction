@@ -2,8 +2,14 @@ package com.occucode.ubti.service;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.occucode.ubti.dto.*;
-import com.occucode.ubti.entity.*;
+import com.occucode.ubti.dto.MbtiQuestionResponseDto;
+import com.occucode.ubti.dto.MbtiQuestionSubmitFriendRequestDto;
+import com.occucode.ubti.dto.MbtiQuestionSubmitResponseDto;
+import com.occucode.ubti.dto.MbtiQuestionSubmitSelfRequestDto;
+import com.occucode.ubti.entity.MbtiResult;
+import com.occucode.ubti.entity.OtherMbtiLog;
+import com.occucode.ubti.entity.SelfMbtiLog;
+import com.occucode.ubti.entity.User;
 import com.occucode.ubti.enums.MbtiEnum;
 import com.occucode.ubti.repository.*;
 import lombok.RequiredArgsConstructor;
@@ -12,22 +18,21 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
-import static java.util.stream.Collectors.toList;
-
 @Service
 @RequiredArgsConstructor
 public class MbtiServiceImpl implements MbtiService {
-  private final MbtiQuestionRepository mbtiQuestionRepository;
   private final MbtiResultRepository mbtiResultRepository;
   private final UserRepository userRepository;
   private final SelfMbtiLogRepository selfMbtiLogRepository;
   private final OtherMbtiLogRepository otherMbtiLogRepository;
+  private final MbtiQuestionRepository mbtiQuestionRepository;
 
   @Transactional(readOnly = true)
   public List<MbtiQuestionResponseDto> getMbtiQuestList() {
     return mbtiQuestionRepository.findAllWithAnswer()
       .stream()
-      .map(MbtiQuestionResponseDto::toDto).collect(toList());
+      .map(MbtiQuestionResponseDto::toDto)
+      .toList();
   }
 
   @Transactional
